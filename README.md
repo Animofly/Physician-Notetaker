@@ -1,20 +1,20 @@
-# Physician-Notetaker[medical_nlp_readme.md](https://github.com/user-attachments/files/22631401/medical_nlp_readme.md)
+# Physician-Notetaker
 # Medical NLP: Clinical Documentation & Sentiment Analysis
 
 A comprehensive Natural Language Processing system for medical applications, featuring clinical note generation, sentiment analysis, and SOAP note generation from medical conversations.
 
 ## 📋 Table of Contents
 
-- [Overview](#overview)
-- [Features](#features)
-- [Installation](#installation)
-- [Project Structure](#project-structure)
-- [Usage Guide](#usage-guide)
-- [Models & Datasets](#models--datasets)
-- [Results](#results)
-- [Dependencies](#dependencies)
-- [Contributing](#contributing)
-- [License](#license)
+- [Overview](##overview)
+- [Features](##features)
+- [Installation](##installation)
+- [Project Structure](##project-structure)
+- [Usage Guide](##usage-guide)
+- [Models & Datasets](##models--datasets)
+- [Results](##results)
+- [Dependencies](##dependencies)
+- [Contributing](##contributing)
+- [License](##license)
 
 ## 🎯 Overview
 
@@ -302,7 +302,7 @@ print(json.dumps(soap_note, indent=2))
 
 ## 📈 Results
 
-### Dataset Statistics
+### Dataset Statistics (from Kaggle)
 
 | Category | Original Count | Cleaned Count |
 |----------|---------------|---------------|
