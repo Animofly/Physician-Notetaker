@@ -5,7 +5,7 @@ A comprehensive Natural Language Processing system for medical applications, fea
 
 
 
-## 🎯 Overview
+##  Overview
 
 This project implements three main NLP tasks for healthcare applications:
 
@@ -13,7 +13,7 @@ This project implements three main NLP tasks for healthcare applications:
 2. **Sentiment & Intent Analysis**: Classifies mental health statements (Anxiety vs Normal) with intent detection
 3. **SOAP Note Generation**: Generates structured SOAP (Subjective, Objective, Assessment, Plan) notes from medical transcripts
 
-## ✨ Features
+##  Features
 
 ### 1. Clinical Note Generation
 - Uses pre-trained `HealthScribe-Clinical_Note_Generator` model
@@ -45,7 +45,7 @@ This project implements three main NLP tasks for healthcare applications:
   - Hybrid system
 - Generates comprehensive clinical documentation
 
-## 🚀 Installation
+##  Installation
 
 ### Prerequisites
 - Python 3.8+
@@ -82,7 +82,7 @@ pip install scikit-learn
 pip install joblib
 ```
 
-## 💻 Usage Guide
+##  Usage Guide
 
 ### 1. Medical Note Generation
 **Dataset**: [MTS_Dialogue-Clinical_Note](https://huggingface.co/datasets/har1/MTS_Dialogue-Clinical_Note)  
@@ -373,7 +373,7 @@ Rule-based baseline → Deep learning refinement → Ontology validation → Hum
 
 **Result**: ~85-90% accuracy with hybrid approach vs ~70% with single method
 
-## 📊 Models & Datasets
+##  Models & Datasets
 
 ### Pre-trained Models Used
 
@@ -399,7 +399,7 @@ Rule-based baseline → Deep learning refinement → Ontology validation → Hum
   - Cleaned size: 16,000 balanced samples
   - Classes: Anxiety (8,000), Normal (8,000)
 
-## 📈 Results
+##  Results
 
 ### Dataset Statistics (from Kaggle)
 
@@ -416,7 +416,7 @@ Rule-based baseline → Deep learning refinement → Ontology validation → Hum
 - **Intent Detection**: Multi-class classification (6+ intent categories)
 - **SOAP Notes**: Structured medical documentation with 4 main sections
 
-## 🔧 Dependencies
+##  Dependencies
 
 ```
 transformers==4.56.2
@@ -431,7 +431,7 @@ jupyter
 ipykernel
 ```
 
-## 🛠️ Troubleshooting
+##  Troubleshooting
 
 ### Common Issues
 
@@ -450,7 +450,7 @@ pip install tensorflow==2.20.0
 - Ensure `from_pt=True` when loading PyTorch models in TensorFlow
 - Check model compatibility with transformers version
 
-## 🤝 Contributing
+##  Contributing
 
 Contributions are welcome! Please:
 
@@ -460,11 +460,11 @@ Contributions are welcome! Please:
 4. Push to branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-## 📝 License
+##  License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-## 🙏 Acknowledgments
+##  Acknowledgments
 
 - HuggingFace for pre-trained models and datasets
 - Anthropic for medical NLP research
