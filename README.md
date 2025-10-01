@@ -3,18 +3,7 @@
 
 A comprehensive Natural Language Processing system for medical applications, featuring clinical note generation, sentiment analysis, and SOAP note generation from medical conversations.
 
-## 📋 Table of Contents
 
-- [Overview]
-- [Features]
-- [Installation]
-- [Project Structure]
-- [Usage Guide]
-- [Models & Datasets]
-- [Results]
-- [Dependencies]
-- [Contributing]
-- [License]
 
 ## 🎯 Overview
 
