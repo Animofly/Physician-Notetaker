@@ -114,6 +114,34 @@ Diagnosis: whiplash injury
 History of Patient: Involved in motor vehicle accident...
 Plan of Action: N/A
 ```
+# Medical NLP Notes
+
+## Q1: Handling Ambiguous / Missing Data  
+
+### Quick Strategies
+- **Mark explicitly** → Use `"Not documented"` instead of leaving fields blank.  
+- **Confidence scores** → Assign a probability (0–1) for uncertain extractions.  
+- **Context inference** → Link related mentions (e.g., `"accident"` → trauma-related symptoms).  
+- **Validation** → Cross-check with medical ontologies like **UMLS** or **SNOMED**.  
+- **Flag for review** → Highlight low-confidence fields for human verification.  
+
+---
+
+## Q2: Pre-trained Models for Medical Summarization  
+
+### Best Models by Task
+| Task | Model | Why |
+|------|-------|-----|
+| **NER (Entity Extraction)** | **BioBERT / ClinicalBERT** | Pre-trained on large-scale medical text |
+| **Summarization** | **Clinical-T5 / BioGPT** | Effective for summarizing clinical notes |
+| **Keyword Extraction** | **KeyBERT + BioBERT** | Medical-aware keyword extraction |
+
+---
+
+### Recommended Pipeline
+1. **Entity Extraction** → Use **BioBERT**.  
+2. **Summarization** → Apply **Clinical-T5** for structured summaries.  
+3. **Validation** → Add **rule-based checks** for critical fields.  
 
 ### 2. Sentiment & Intent Analysis
 
@@ -199,6 +227,65 @@ print(prediction)
   "Intent": "Seeking Reassurance"
 }
 ```
+# Medical Sentiment Analysis - Q&A
+
+## Q1: How to fine-tune BERT for medical sentiment detection?
+
+### Steps:
+
+1. **Base Model**: Use `distilbert-base-uncased` or `bert-base-uncased`
+
+2. **Add Classification Head**:
+```python
+from transformers import DistilBertForSequenceClassification
+
+model = DistilBertForSequenceClassification.from_pretrained(
+    "distilbert-base-uncased",
+    num_labels=3  # Anxious, Neutral, Reassured
+)
+```
+
+3. **Training Config**:
+- Learning rate: 2e-5
+- Batch size: 16
+- Epochs: 3-5
+- Max length: 128
+
+4. **Key Techniques**:
+- **Class balancing**: Oversample minority classes
+- **Data augmentation**: Paraphrase medical statements
+- **Multi-task learning**: Train sentiment + intent together
+- **Domain-specific**: Consider BioClinicalBERT for better medical understanding
+
+---
+
+## Q2: Datasets for healthcare-specific sentiment models?
+
+### Recommended Datasets:
+
+| Dataset | Size | Use Case |
+|---------|------|----------|
+| **Medical Sentiment Analysis (Kaggle)** | ~10K | Patient reviews |
+| **Drug Review Dataset (UCI)** | 215K | Medication sentiment |
+| **Mental Health Reddit** | ~50K | Anxiety/concern detection |
+| **Patient Forum Data** | ~100K | Patient concerns/questions |
+| **MIMIC-III Clinical Notes** | 2M | Clinical context |
+
+### Best Options:
+- **Mental Health Corpus** (Reddit) - anxiety patterns
+- **Drug Reviews** (Drugs.com) - treatment sentiment
+- **Patient Forums** (HealthBoards) - reassurance-seeking behavior
+
+### Quick Start:
+```python
+from datasets import load_dataset
+
+# Use existing emotion datasets, then fine-tune on medical data
+emotion_dataset = load_dataset("emotion")
+go_emotions = load_dataset("go_emotions")
+```
+
+**Key**: Combine general sentiment datasets with medical-specific data for best results.
 
 ### 3. SOAP Note Generation
 
@@ -243,6 +330,48 @@ print(json.dumps(soap_note, indent=2))
   }
 }
 ```
+# SOAP Note Generation - Q&A
+
+## Q1: How to train an NLP model to map medical transcripts into SOAP format?
+
+### Training Steps:
+
+1. **Dataset**: 1000+ annotated transcripts with SOAP labels
+2. **Model**: Fine-tune T5 or Clinical-T5
+3. **Approach**: Text-to-text generation
+
+```python
+from transformers import T5ForConditionalGeneration
+
+model = T5ForConditionalGeneration.from_pretrained("t5-base")
+
+# Training format
+input = "extract subjective from: Doctor: How are you? Patient: I have pain..."
+output = '{"Chief_Complaint": "Pain", "History": "..."}'
+```
+
+**Training config**: Learning rate 5e-5, batch size 8, epochs 3-5
+
+---
+
+## Q2: What techniques improve SOAP note accuracy?
+
+### Rule-Based:
+- **Keyword mapping**: Map words to SOAP sections (pain→Subjective, exam→Objective)
+- **Medical ontologies**: Validate with UMLS/SNOMED CT
+- **Pattern matching**: Temporal phrases→History, procedures→Plan
+
+### Deep Learning:
+- **Pre-trained models**: BioBERT, Clinical-T5, BioClinicalBERT
+- **Multi-task learning**: Train all sections together
+- **Ensemble**: Combine rule-based + transformer outputs
+
+### Best Approach:
+```
+Rule-based baseline → Deep learning refinement → Ontology validation → Human review
+```
+
+**Result**: ~85-90% accuracy with hybrid approach vs ~70% with single method
 
 ## 📊 Models & Datasets
 
