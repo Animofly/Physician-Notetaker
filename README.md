@@ -5,16 +5,16 @@ A comprehensive Natural Language Processing system for medical applications, fea
 
 ## 📋 Table of Contents
 
-- [Overview](##overview)
-- [Features](##features)
-- [Installation](##installation)
-- [Project Structure](##project-structure)
-- [Usage Guide](##usage-guide)
-- [Models & Datasets](##models--datasets)
-- [Results](##results)
-- [Dependencies](##dependencies)
-- [Contributing](##contributing)
-- [License](##license)
+- [Overview]
+- [Features]
+- [Installation]
+- [Project Structure]
+- [Usage Guide]
+- [Models & Datasets]
+- [Results]
+- [Dependencies]
+- [Contributing]
+- [License]
 
 ## 🎯 Overview
 
@@ -93,30 +93,11 @@ pip install scikit-learn
 pip install joblib
 ```
 
-## 📁 Project Structure
-
-```
-medical-nlp/
-│
-├── Untitled1 (1).ipynb          # Main notebook
-├── cleaned_dataset2.csv          # Processed mental health dataset
-├── Combined Data.csv             # Raw dataset
-│
-├── models/
-│   ├── anxiety_normal_tf_model/ # Trained sentiment model
-│   ├── multi_task_model/        # Multi-task classification model
-│   └── label_encoder.pkl        # Label encoders
-│
-├── outputs/
-│   └── soap_notes/              # Generated SOAP notes
-│
-└── README.md                    # This file
-```
-
 ## 💻 Usage Guide
 
 ### 1. Medical Note Generation
-
+**Dataset**: [MTS_Dialogue-Clinical_Note](https://huggingface.co/datasets/har1/MTS_Dialogue-Clinical_Note)  
+**Model**: [HealthScribe-Clinical_Note_Generator](https://huggingface.co/har1/HealthScribe-Clinical_Note_Generator)
 ```python
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 
